@@ -22,7 +22,11 @@ const Modal = ({ setIsModalOpen, setIsOrderCompleted }) => {
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.cardNumber.trim())
       newErrors.cardNumber = "Card number is required";
+    else if (!/^\d{16}$/.test(formData.cardNumber))
+      newErrors.cardNumber = "Invalid card number";
     if (!formData.cvv.trim()) newErrors.cvv = "CVV is required";
+    else if (!/^\d{3}$/.test(formData.cvv))
+      newErrors.cvv = "CVV must be 3 digits";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };

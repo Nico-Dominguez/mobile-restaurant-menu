@@ -4,7 +4,7 @@ import Menu from "./components/Menu";
 
 function App() {
   return (
-    <body className="mx-auto bg-slate-800 min-h-screen text-white">
+    <body className="mx-auto bg-slate-800 min-h-screen">
       <Hero />
       <Menu />
     </body>

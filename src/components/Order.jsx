@@ -4,27 +4,32 @@ const Order = ({ items, removeItem }) => {
   const totalPrice = items.reduce((sum, item) => sum + item.price, 0);
 
   return (
-    <div className="container mx-auto grid gap-8">
-      <h1 className="text-center text-6xl font-bold">Your Order</h1>
+    <div className="bg-white rounded-lg shadow-lg p-8">
+      <h1 className="text-4xl font-bold mb-8 text-center">Your Order</h1>
 
       {items.map((item) => (
-        <div key={item.id} className="border-b-2 border-slate-50">
-          <div className="flex gap-4 text-4xl py-8">
-            <h1>{item.name}</h1>
-            <button
-              onClick={() => removeItem(item.id)}
-              className="flex items-center justify-center bg-blue-500 rounded p-2 text-xl"
-            >
-              remove
-            </button>
-            <h2 className="ml-auto">${item.price}</h2>
+        <div key={item.id} className="border-b border-gray-200 py-6">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-4">
+              <div className="text-6xl">{item.emoji}</div>
+              <h2 className="text-2xl font-bold">{item.name}</h2>
+            </div>
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => removeItem(item.id)}
+                className="bg-violet-500 hover:bg-violet-600 text-white font-bold py-2 px-4 rounded-full transition-colors"
+              >
+                Remove
+              </button>
+              <p className="text-2xl font-bold">${item.price}</p>
+            </div>
           </div>
         </div>
       ))}
 
-      <div className="flex text-4xl">
-        <h1>Total Price:</h1>
-        <h2 className="ml-auto">${totalPrice.toFixed(2)}</h2>
+      <div className="flex justify-between items-center mt-8 text-2xl font-bold">
+        <h2>Total:</h2>
+        <p>${totalPrice.toFixed(2)}</p>
       </div>
     </div>
   );
